@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="panel-sidebar left-sidebar">
+            <div class="brand-header">
+                <div class="brand-logo">AI</div>
+                <span>Rodali</span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a class="nav-item active" onclick="switchView('dashboard')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9.75L12 3l9 6.75V21a1.5 1.5 0 01-1.5 1.5h-5.25V15H9.75v7.5H4.5A1.5 1.5 0 013 21V9.75z" /></svg>Home</div></a></li>
+                    <li><a class="nav-item" onclick="switchView('create')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>Create Video</div></a></li>
+                    <li><a class="nav-item" onclick="switchView('projects')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>My Projects</div></a></li>
+                    <div class="nav-divider"></div>
+                    <li><a class="nav-item pro-item" onclick="switchView('brand')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" /></svg>Brand Kit</div><span class="pro-chip">PRO</span></a></li>
+                    <li><a class="nav-item pro-item" onclick="switchView('templates')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>Templates</div><span class="pro-chip">PRO</span></a></li>
+                    <div class="nav-divider"></div>
+                    <li><a class="nav-item" onclick="switchView('billing')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>Billing & Plans</div></a></li>
+                    <li><a class="nav-item" onclick="switchView('settings')"><div class="nav-item-content"><svg class="nav-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>Account Settings</div></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- CENTER CANVAS -->
+        <main class="center-canvas">
+            
+            <!-- VIEW 0: DASHBOARD (New Step 10) -->
+            <div id="view-dashboard" class="dashboard-view">
+                <div class="dashboard-hero">
+                    <h1>Welcome back, Founder</h1>
+                    <p>Ready to generate your next viral SaaS video?</p>
+                    <button class="btn-hero" onclick="switchView('create')">Create New Video</button>
+                </div>
+
+                <div>
+                    <div class="section-header">
+                        Recent Projects
+                        <a class="view-all-link" onclick="switchView('projects')">View All</a>
+                    </div>
+                    <div class="horizontal-scroll-container">
+                        <div class="scroll-card">
+                            <div class="card-thumbnail" style="height:140px;"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.4"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>
+                            <div style="padding:12px;">
+                                <div style="font-weight:600; font-size:0.9rem; color:var(--text-main);">SaaS Launch V1</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Edited 2h ago</div>
+                            </div>
+                        </div>
+                        <div class="scroll-card">
+                            <div class="card-thumbnail" style="height:140px;"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.4"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
+                            <div style="padding:12px;">
+                                <div style="font-weight:600; font-size:0.9rem; color:var(--text-main);">Feature Highlight</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Edited yesterday</div>
+                            </div>
+                        </div>
+                        <div class="scroll-card">
+                            <div class="card-thumbnail" style="height:140px;"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.4"><path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"></path></svg></div>
+                            <div style="padding:12px;">
+                                <div style="font-weight:600; font-size:0.9rem; color:var(--text-main);">Mobile Demo</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Edited 3 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-header">Tips & Inspiration</div>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <svg class="tip-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                            <div class="tip-content">
+                                <h4>Viral Format: The "Glow Up"</h4>
+                                <p>Try the new transition effect perfect for showing before/after results of your SaaS tool.</p>
+                            </div>
+                        </div>
+                        <div class="tip-card">
+                            <svg class="tip-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+                            <div class="tip-content">
+                                <h4>New Voice: "Tech Minimalist"</h4>
+                                <p>A calm, authoritative voice ideal for B2B product walkthroughs is now available in ProGen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 1: CREATE / PREVIEW -->
+            <div id="view-create" class="w-full flex-center flex-col hidden">
+                <div id="video-placeholder" class="video-placeholder-container">
+                    <div class="glass-overlay"></div>
+                    <div class="placeholder-content">
+                        <svg class="placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"></path></svg>
+                        <h2 class="placeholder-text">Your generated video will appear here</h2>
+                    </div>
+                </div>
+                <div id="video-preview" class="video-preview-container hidden">
+                    <div class="video-player-frame">
+                        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.2;">
+                            <svg width="80" height="80" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="video-controls-overlay">
+                            <div class="timeline-track"><div class="timeline-progress"></div><div class="timeline-thumb"></div></div>
+                            <div class="control-row">
+                                <div style="display: flex; gap: 16px; align-items: center;"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg><span>00:12 / 00:30</span></div>
+                                <div style="display: flex; gap: 12px;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.536 3.464a10 10 0 1 0 0 14.142"/></svg><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-actions-bar">
+                        <div class="thumb-strip"><div class="thumb-frame active"></div><div class="thumb-frame"></div><div class="thumb-frame"></div><div class="thumb-frame"></div></div>
+                        <div style="display: flex; gap: 12px;"><button class="btn-secondary" style="width: auto; padding: 10px 20px;">Clone</button><button class="canvas-cta">Download <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: MY PROJECTS -->
+            <div id="view-projects" class="projects-view hidden">
+                <div class="projects-header">
+                    <h1 class="projects-title">My Projects</h1>
+                    <button class="canvas-cta" onclick="switchView('create')">+ New Project</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="card-thumbnail">
+                            <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                            <div class="card-badge"><span class="status-dot status-complete"></span> Complete</div>
+                        </div>
+                        <div class="card-body"><div class="card-title">SaaS Launch V1</div><div class="card-meta"><span>Oct 24, 2023</span><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg></div></div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-thumbnail">
+                            <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            <div class="card-badge"><span class="status-dot status-draft"></span> Draft</div>
+                        </div>
+                        <div class="card-body"><div class="card-title">Feature Highlight</div><div class="card-meta"><span>2 days ago</span><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: BRAND KIT -->
+            <div id="view-brand" class="brand-view hidden">
+                <h1 class="projects-title">Brand Identity</h1>
+                <div class="brand-card">
+                    <div>
+                        <div class="preview-section-title">Logo Asset</div>
+                        <div class="logo-preview-area">
+                            <div style="text-align:center;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg><div>Upload Logo to Preview</div></div>
+                        </div>
+                    </div>
+                    <div class="typography-preview">
+                        <div class="preview-section-title">Typography</div>
+                        <h3>Inter Semi-Bold</h3>
+                        <p>The quick brown fox jumps over the lazy dog. A clean, modern typeface for SaaS communication.</p>
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <div class="preview-section-title">Primary & Secondary Palette</div>
+                        <div class="color-palette-grid">
+                            <div class="palette-item"><div class="color-swatch-preview" style="background-color: #3B82F6;"></div><div><div style="font-weight:600; font-size:0.9rem;">Primary Blue</div><div style="color:var(--text-muted); font-size:0.8rem;">#3B82F6</div></div></div>
+                            <div class="palette-item"><div class="color-swatch-preview" style="background-color: #64748B;"></div><div><div style="font-weight:600; font-size:0.9rem;">Secondary Slate</div><div style="color:var(--text-muted); font-size:0.8rem;">#64748B</div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 4: TEMPLATES -->
+            <div id="view-templates" class="templates-view hidden">
+                <div class="projects-header">
+                    <h1 class="projects-title">Templates</h1>
+                </div>
+                <div class="category-pills">
+                    <div class="category-pill active">All Templates</div>
+                    <div class="category-pill">SaaS Demo</div>
+                    <div class="category-pill">Feature Reveal</div>
+                    <div class="category-pill">Testimonial</div>
+                    <div class="category-pill">Onboarding</div>
+                    <div class="category-pill">Launch Trailer</div>
+                </div>
+                <div class="projects-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+                    <div class="project-card template-card">
+                        <div class="card-thumbnail" style="background: linear-gradient(45deg, #0F172A, #1E293B);">
+                             <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>
+                        </div>
+                        <div class="template-hover-overlay"><button class="btn-use-template">Use Template</button></div>
+                        <div class="card-badge" style="bottom: 10px; top: auto; left: 10px; right: auto;">SaaS Demo</div>
+                    </div>
+                    <div class="project-card template-card" style="border-color: var(--pro-purple-dim);">
+                        <div class="card-thumbnail" style="background: linear-gradient(135deg, #1e1b4b, #4c1d95);">
+                             <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        </div>
+                        <div class="template-hover-overlay"><button class="btn-use-template">Use Template</button></div>
+                        <div class="card-badge" style="bottom: 10px; top: auto; left: 10px; right: auto;">Launch Trailer</div>
+                        <div class="card-badge" style="background-color: var(--pro-purple); top: 10px; right: 10px; left: auto; bottom: auto;">PRO</div>
+                    </div>
+                     <div class="project-card template-card">
+                        <div class="card-thumbnail" style="background: linear-gradient(to bottom, #0F172A, #334155);">
+                             <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                        </div>
+                        <div class="template-hover-overlay"><button class="btn-use-template">Use Template</button></div>
+                        <div class="card-badge" style="bottom: 10px; top: auto; left: 10px; right: auto;">App Walkthrough</div>
+                    </div>
+                    <div class="project-card template-card">
+                        <div class="card-thumbnail" style="background: linear-gradient(to top right, #111827, #374151);">
+                             <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
+                        </div>
+                        <div class="template-hover-overlay"><button class="btn-use-template">Use Template</button></div>
+                        <div class="card-badge" style="bottom: 10px; top: auto; left: 10px; right: auto;">Testimonial</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 5: BILLING -->
+            <div id="view-billing" class="billing-view hidden">
+                <div class="projects-header">
+                    <h1 class="projects-title">Plans & Pricing</h1>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div>
+                            <div class="tier-name">CoreGen</div>
+                            <div class="tier-price">$29<span>/mo</span></div>
+                            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Perfect for early-stage startups.</div>
+                        </div>
+                        <button class="btn-plan outline">Current Plan</button>
+                        <ul class="feature-list">
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>10 Video Credits/mo</li>
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>720p Exports</li>
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Standard Templates</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card pro-tier">
+                        <div class="recommended-badge">Recommended</div>
+                        <div>
+                            <div class="tier-name" style="color:var(--pro-purple);">ProGen</div>
+                            <div class="tier-price">$79<span>/mo</span></div>
+                            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">For growth-focused teams.</div>
+                        </div>
+                        <button class="btn-plan pro">Upgrade to Pro</button>
+                        <ul class="feature-list">
+                            <li class="feature-item highlight"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>50 Video Credits/mo</li>
+                            <li class="feature-item pro-feature"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>4K Resolution</li>
+                            <li class="feature-item pro-feature"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Premium Asset Library</li>
+                            <li class="feature-item pro-feature"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Brand Kit Auto-Sync</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card">
+                        <div>
+                            <div class="tier-name">Enterprise</div>
+                            <div class="tier-price">$199<span>/mo</span></div>
+                            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Maximum scale and support.</div>
+                        </div>
+                        <button class="btn-plan primary">Contact Sales</button>
+                        <ul class="feature-list">
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Unlimited Credits</li>
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>API Access</li>
+                            <li class="feature-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Dedicated Success Mgr</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 6: ACCOUNT SETTINGS -->
+            <div id="view-settings" class="settings-view hidden">
+                <h1 class="projects-title">Account Settings</h1>
+                <div class="settings-section">
+                    <div class="settings-section-header"><div class="settings-section-title">Profile</div></div>
+                    <div class="settings-section-body">
+                        <div class="profile-header">
+                            <div class="profile-avatar"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg></div>
+                            <div><div style="font-weight:600;">Upload Avatar</div><div style="font-size:0.85rem; color:var(--text-muted);">JPG, GIF or PNG. Max 1MB.</div></div>
+                        </div>
+                        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" value="Demo User"></div>
+                        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" value="demo@example.com"></div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="settings-section-header"><div class="settings-section-title">Security</div></div>
+                    <div class="settings-section-body">
+                         <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
+                         <button class="btn-secondary" style="width:fit-content;">Update Password</button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="settings-section-header"><div class="settings-section-title">Notifications</div></div>
+                    <div class="settings-section-body">
+                        <div class="toggle-row"><span class="toggle-label">Email: Generation Complete</span><input type="checkbox" class="toggle-switch" checked></div>
+                        <div class="toggle-row"><span class="toggle-label">Email: Billing Alerts</span><input type="checkbox" class="toggle-switch" checked></div>
+                        <div class="toggle-row"><span class="toggle-label">Marketing Updates</span><input type="checkbox" class="toggle-switch"></div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="settings-section-header"><div class="settings-section-title">API Access</div></div>
+                    <div class="settings-section-body">
+                        <div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:8px;">Use this key to authenticate requests to the VideoSaaS API.</div>
+                        <div class="api-key-box">
+                            <div class="api-key-text">sk_live_51Mx...8s9a</div>
+                            <button class="btn-icon" title="Copy"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg></button>
+                            <button class="btn-icon" title="Regenerate"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section" style="border-color: rgba(239, 68, 68, 0.3);">
+                    <div class="settings-section-header"><div class="settings-section-title" style="color:var(--status-error);">Danger Zone</div></div>
+                    <div class="settings-section-body"><button class="btn-danger">Logout</button></div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="panel-sidebar right-sidebar">
+            
+            <!-- === SIMPLE MODE PANEL === -->
+            <div id="panel-simple" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title">Fast Generate (Simple)</span></div>
+                <div class="config-body">
+                    <div class="form-group"><label class="form-label">Source Type</label><select class="form-select"><option>URL Crawl</option><option>Upload Screenshots</option><option>Text Only</option></select></div>
+                    <div class="toggle-row"><span class="toggle-label">Auto-detect Brand Colors</span><input type="checkbox" class="toggle-switch" checked></div>
+                    <div class="form-group"><label class="form-label">Use Case</label><select class="form-select"><option>Product Demo</option><option>Feature Reveal</option></select></div>
+                    <div class="form-group"><label class="form-label">Visual Vibe</label><select class="form-select"><option>Corporate Clean</option><option>Modern SaaS</option><option>High Energy</option></select></div>
+                    <div class="form-group"><label class="form-label">Platform & Duration</label><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"><select class="form-select"><option>LinkedIn</option><option>TikTok</option></select><select class="form-select"><option>15s</option><option>30s</option></select></div></div>
+                    <div class="toggle-row"><span class="toggle-label">Auto Script</span><input type="checkbox" class="toggle-switch" checked></div>
+                    <div class="form-group"><label class="form-label">Voiceover</label><select class="form-select"><option>Neutral Male</option><option>Neutral Female</option></select></div>
+                    <div class="generate-section"><button class="btn-generate" onclick="showPreview()">Generate Video<span class="btn-subtext">Est. Cost: 5 Credits</span></button><a onclick="toggleMode('advanced')" class="link-toggle-mode link-to-advanced">Switch to Advanced Mode</a></div>
+                </div>
+            </div>
+
+            <!-- === ADVANCED MODE PANEL === -->
+            <div id="panel-advanced" class="mode-panel hidden">
+                <div class="advanced-layout">
+                    <div class="icon-rail">
+                        <div class="icon-rail">
+    <div class="rail-icon active" onclick="scrollToSection('adv-section-input', this)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
+    </div>
+    <div class="rail-icon" onclick="scrollToSection('adv-section-script', this)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+    </div>
+    <div class="rail-icon pro" onclick="scrollToSection('adv-section-visual', this)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" /></svg>
+    </div>
+    <div class="rail-icon" onclick="scrollToSection('adv-section-motion', this)">
+       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+    </div>
+     <div class="rail-icon" onclick="scrollToSection('adv-section-variants', this)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" /></svg>
+    </div>
+</div>
+                    </div>
+                    <div class="advanced-content">
+                        <div class="config-header" style="padding: 0 0 20px 0; border: none;">
+    <span class="config-title">Advanced Engine</span>
+</div>
+
+<div id="adv-section-input" class="adv-section">
+    <div class="section-label">Input & Model</div>
+    <div class="form-group">
+        <label class="form-label">Generation Model <span class="badge-pro">PRO</span></label>
+        <div class="toggle-row">
+            <span class="toggle-label">Use ProGen v2.0</span>
+            <input type="checkbox" id="toggle-progen" class="toggle-switch pro-toggle cost-trigger" checked>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top: 12px;">
+        <label class="form-label">Asset Treatment</label>
+        <select class="form-select"><option>Smart Crop (Auto)</option><option>Fit to Container</option></select>
+    </div>
+</div>
+
+<div class="nav-divider"></div>
+
+<div id="adv-section-script" class="adv-section">
+    <div class="section-label">Script Engine</div>
+    <div class="form-group">
+        <label class="form-label">Narrative Structure</label>
+        <select class="form-select"><option>Problem - Solution - CTA</option><option>Feature Highlight Loop</option></select>
+    </div>
+    <div class="form-group" style="margin-top: 12px;">
+        <label class="form-label">Tone Density</label>
+        <select class="form-select"><option>Balanced</option><option>Minimalist</option></select>
+    </div>
+</div>
+
+<div class="nav-divider"></div>
+
+<div id="adv-section-visual" class="adv-section">
+    <div class="section-label">Visual Engine</div>
+    <div class="form-group">
+        <label class="form-label">Art Direction</label>
+        <select class="form-select"><option>Brand Consistent</option><option>Cinematic</option></select>
+    </div>
+    <div class="form-group" style="margin-top: 12px;">
+        <label class="form-label">Camera Motion</label>
+        <select class="form-select"><option>Static</option><option>Slow Zoom</option><option>Handheld</option></select>
+    </div>
+</div>
+
+<div class="nav-divider"></div>
+
+<div id="adv-section-motion" class="adv-section">
+    <div class="section-label">Animation & Effects</div>
+    <div class="form-group">
+        <label class="form-label">Transitions</label>
+        <select class="form-select"><option>Smooth Fade</option><option>Hard Cut</option><option>Slide</option></select>
+    </div>
+    <div class="form-group" style="margin-top: 12px;">
+        <label class="form-label">Resolution</label>
+        <select id="select-resolution" class="form-select cost-trigger">
+            <option value="1080">1080p HD</option>
+            <option value="4k">4K Ultra (Pro)</option>
+        </select>
+    </div>
+</div>
+
+<div class="nav-divider"></div>
+
+<div id="adv-section-variants" class="adv-section">
+    <div class="section-label">Variants / Performance</div>
+    <div class="form-group">
+        <label class="form-label">A/B Generation</label>
+        <div class="toggle-row">
+            <span class="toggle-label">Generate 2 Variants</span>
+            <input type="checkbox" id="toggle-ab" class="toggle-switch cost-trigger">
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+                <div class="advanced-actions">
+                    <button class="btn-secondary">Preview Scene Plan</button>
+<button class="btn-generate" onclick="showPreview()">
+    Generate Video
+    <span id="adv-cost-display" class="btn-subtext">Est. Cost: ~12 Credits</span>
+</button>                    <a onclick="toggleMode('simple')" class="link-toggle-mode link-to-simple">Switch to Simple Mode</a>
+                </div>
+            </div>
+
+            <!-- === SCENE EDITOR PANEL === -->
+            <div id="panel-scenes" class="mode-panel hidden">
+                <div class="config-header" style="display: flex; justify-content: space-between; align-items: center;"><span class="config-title">Scene Editor</span><button class="btn-secondary" style="width: auto; padding: 6px 10px; font-size: 0.75rem;">+ Add</button></div>
+                <div class="config-body">
+                    <div class="scene-card"><div class="scene-thumb">SCENE 1</div><div class="scene-info"><div class="scene-title">01: Intro Hook</div><div class="scene-desc">"Struggling with video creation?" (3s)</div><div class="scene-actions"><button class="btn-mini">Edit</button><button class="btn-mini pro-action">Regen</button></div></div></div>
+                    <div class="scene-card"><div class="scene-thumb">SCENE 2</div><div class="scene-info"><div class="scene-title">02: The Solution</div><div class="scene-desc">App interface dashboard reveal. (5s)</div><div class="scene-actions"><button class="btn-mini">Edit</button><button class="btn-mini pro-action">Regen</button></div></div></div>
+                </div>
+            </div>
+
+            <!-- === FILTER PANEL === -->
+            <div id="panel-filters" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title" id="filter-title">Filters</span></div>
+                <div class="config-body" id="filter-body"></div>
+            </div>
+
+            <!-- === BRAND CONFIG PANEL === -->
+            <div id="panel-brand" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title">Brand Configuration</span></div>
+                <div class="config-body">
+                    <div class="form-group"><label class="form-label">Logo</label><div class="file-upload-zone"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-bottom:8px;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12" stroke-linecap="round" stroke-linejoin="round"/></svg><div>Drag or Click to Upload</div></div></div>
+                    <div class="form-group"><label class="form-label">Brand Colors</label><div style="display: flex; flex-direction: column; gap: 12px;"><div class="color-picker-row"><div class="color-picker-row">
+    <input type="color" id="brand-input-primary" class="color-input-native" value="#3B82F6">
+    <span class="color-hex-value" id="brand-hex-primary">#3B82F6</span>
+    <span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Primary</span>
+</div>
+<div class="color-picker-row">
+    <input type="color" id="brand-input-secondary" class="color-input-native" value="#64748B">
+    <span class="color-hex-value" id="brand-hex-secondary">#64748B</span>
+    <span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Secondary</span>
+</div><span class="color-hex-value">#3B82F6</span><span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Primary</span></div><div class="color-picker-row"><div class="color-picker-row">
+    <input type="color" id="brand-input-primary" class="color-input-native" value="#3B82F6">
+    <span class="color-hex-value" id="brand-hex-primary">#3B82F6</span>
+    <span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Primary</span>
+</div>
+<div class="color-picker-row">
+    <input type="color" id="brand-input-secondary" class="color-input-native" value="#64748B">
+    <span class="color-hex-value" id="brand-hex-secondary">#64748B</span>
+    <span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Secondary</span>
+</div><span class="color-hex-value">#64748B</span><span style="margin-left:auto; font-size:0.75rem; color:var(--text-muted);">Secondary</span></div></div></div>
+                    <div class="form-group"><label class="form-label">Typography</label><select class="form-select"><option>Inter (Default)</option><option>Roboto</option><option>Open Sans</option></select></div>
+                    <div class="nav-divider"></div>
+                    <div class="form-group"><label class="form-label">Automated Setup <span class="badge-pro">PRO</span></label><button class="btn-pro-action"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Auto-scan from URL</button></div>
+                </div>
+            </div>
+
+            <!-- === TEMPLATE DETAILS PANEL === -->
+            <div id="panel-templates" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title">Template Filters</span></div>
+                <div class="config-body">
+                    <div class="form-group"><label class="form-label">Category</label><select class="form-select"><option>All Categories</option><option>SaaS Demo</option><option>Feature Reveal</option><option>Launch Trailer</option></select></div>
+                    <div class="form-group"><label class="form-label">Style</label><select class="form-select"><option>Any Style</option><option>Dark UI</option><option>Minimalist</option><option>3D Abstract</option></select></div>
+                    <div class="form-group"><label class="form-label">Duration</label><select class="form-select"><option>Any Duration</option><option>< 15s</option><option>15s - 60s</option><option>> 60s</option></select></div>
+                     <div class="nav-divider"></div>
+                     <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">Select a template from the gallery to auto-populate your simple mode configuration.</div>
+                </div>
+            </div>
+
+            <!-- === BILLING PANEL === -->
+            <div id="panel-billing" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title">Current Usage</span></div>
+                <div class="config-body">
+                    <div style="text-align:center; margin-bottom:16px;"><div style="font-size:0.9rem; color:var(--text-muted);">CoreGen Plan</div><div style="font-size:1.5rem; font-weight:700; color:var(--text-main);">6 / 10 Credits</div></div>
+                    <div class="credit-bar-container"><div class="credit-bar-fill"></div></div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); text-align:right; margin-top:4px;">Resets in 12 days</div>
+                    <div class="nav-divider"></div>
+                    <div class="config-header" style="padding-left:0; padding-right:0; border:none;"><span class="config-title">Payment Method</span></div>
+                    <div style="background:var(--input-bg); padding:12px; border-radius:8px; border:1px solid var(--border-slate); display:flex; align-items:center; gap:12px;"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg><div><div style="font-size:0.9rem; font-weight:600;">•••• 4242</div><div style="font-size:0.75rem; color:var(--text-muted);">Exp 12/25</div></div><button class="btn-mini" style="margin-left:auto;">Edit</button></div>
+                </div>
+            </div>
+
+            <!-- === SETTINGS SIDEBAR === -->
+            <div id="panel-settings" class="mode-panel hidden">
+                <div class="config-header"><span class="config-title">Quick Support</span></div>
+                <div class="config-body">
+                    <button class="btn-secondary" style="justify-content: flex-start; width: 100%; gap: 8px;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg> Documentation</button>
+                    <button class="btn-secondary" style="justify-content: flex-start; width: 100%; gap: 8px;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg> Help Center</button>
+                    <div class="nav-divider"></div>
+                    <div style="font-size:0.8rem; color:var(--text-muted); text-align:center;">VideoSaaS v1.0.4</div>
+                </div>
+            </div>
+
+            <!-- Empty State for other potential future panels -->
+            <div id="panel-dashboard" class="mode-panel hidden">
+                 <div class="config-header"><span class="config-title">Announcements</span></div>
+                 <div class="config-body">
+                     <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">Welcome to the new dashboard! Check back here for system updates and new feature releases.</div>
+                 </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="script2.js"></script>
+
+</body>
+</html>
